@@ -1,0 +1,258 @@
+.pageContainer {
+    display: flex;
+    height: 100vh;
+    background-color: #f9fafb;
+    /* Light Gray Background */
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* 3 Column Layout */
+.leftColumn {
+    width: 320px;
+    background-color: #ffffff;
+    border-right: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.centerColumn {
+    flex: 1;
+    background-color: #f9fafb;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.rightColumn {
+    width: 380px;
+    background-color: #ffffff;
+    border-left: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* Headers */
+.columnHeader {
+    padding: 16px;
+    border-bottom: 2px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionTitle {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #374151;
+    letter-spacing: 0.05em;
+}
+
+/* Fleet Summary Grid */
+.summaryGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.kpiTile {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.kpiNumber {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.kpiLabel {
+    font-size: 10px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* Incident Queue */
+.queueHeader {
+    padding: 16px;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 10px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+}
+
+.queueList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.queueItem {
+    padding: 16px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.queueItem:hover {
+    background-color: #f9fafb;
+}
+
+.queueItemSelected {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+.queueItemSelected .textMuted {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.queueItemSelected .statusBadge {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.textMuted {
+    color: #6b7280;
+}
+
+/* Map Card */
+.mapCard {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mapHeader {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mapCanvas {
+    flex: 1;
+    background-color: #f9fafb;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    /* SVG handles scaling */
+}
+
+/* Buttons */
+.btnPrimary {
+    background-color: #2563eb;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.btnSecondary {
+    background-color: white;
+    color: #374151;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+}
+
+.btnFull {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btnActionPrimary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+}
+
+.btnActionSecondary {
+    background-color: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+/* Utilities */
+.statusBadge {
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.telemetryRow {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.sensorChip {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 9999px;
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #374151;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* Map Legend */
+.mapLegend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.legendRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    margin-bottom: 4px;
+    color: #374151;
+}

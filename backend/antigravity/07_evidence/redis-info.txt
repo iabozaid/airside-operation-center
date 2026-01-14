@@ -1,0 +1,33 @@
+# Server
+
+redis_version:3.0.504
+
+redis_git_sha1:00000000
+
+redis_git_dirty:0
+
+redis_build_id:a4f7a6e86f2d60b3
+
+redis_mode:standalone
+
+os:Windows  
+
+arch_bits:64
+
+multiplexing_api:WinSock_IOCP
+
+process_id:3088
+
+run_id:cf4b59970418919958bb6f24554fdb1bc3d16ab7
+
+tcp_port:6379
+
+uptime_in_seconds:295664
+
+uptime_in_days:3
+
+hz:10
+
+lru_clock:6368233
+
+config_file:C:\Program Files\Redis\redis.windows-service.conf

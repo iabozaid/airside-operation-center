@@ -1,0 +1,93 @@
+import React, { useState, useEffect } from 'react';
+import { FleetList } from './FleetList';
+import { FleetMap } from './FleetMap';
+import { FleetWorkbench } from './FleetWorkbench';
+import { FleetAsset } from '../../state/fleetTypes';
+
+export const FleetControlPage: React.FC = () => {
+    const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
+    const [selectedAsset, setSelectedAsset] = useState<FleetAsset | null>(null);
+    const [assets, setAssets] = useState<FleetAsset[]>([]);
+
+    // UI Contract: Loading & Error States
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        let mounted = true;
+        setLoading(true);
+        setError(null);
+
+        fetch('/fleet/assets')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                if (mounted) {
+                    // Defensive: Ensure array
+                    setAssets(Array.isArray(data) ? data : []);
+                }
+            })
+            .catch(err => {
+                console.error("Failed to fetch fleet", err);
+                if (mounted) setError("Failed to load fleet assets");
+            })
+            .finally(() => {
+                if (mounted) setLoading(false);
+            });
+
+        return () => { mounted = false; };
+    }, []);
+
+    const handleSelect = (asset: FleetAsset) => {
+        setSelectedAsset(asset);
+        setSelectedId(asset.id);
+    };
+
+    if (loading) return <div style={{ padding: 20, color: '#fff' }}>Loading Fleet Assets...</div>;
+    if (error) return <div style={{ padding: 20, color: 'var(--color-error)' }}>Error: {error}</div>;
+
+    return (
+        <div style={{ display: 'flex', height: '100%' }}>
+            {/* Zone 1: List (Queue) */}
+            <div style={{
+                width: 'var(--sidebar-width)',
+                backgroundColor: 'var(--color-bg-surface)',
+                height: '100%',
+                borderRight: '1px solid var(--color-bg-sidebar)',
+                overflow: 'hidden'
+            }}>
+                <FleetList
+                    onSelect={handleSelect}
+                    selectedId={selectedId}
+                    // Pass assets safely
+                    assets={assets}
+                />
+            </div>
+
+            {/* Zone 2: Map (Main) */}
+            <div style={{
+                flex: 1,
+                position: 'relative',
+                backgroundColor: '#1a1f24'
+            }}>
+                <FleetMap
+                    assets={assets}
+                    selectedId={selectedId}
+                    onSelect={handleSelect}
+                />
+            </div>
+
+            {/* Zone 3: Workbench */}
+            <div style={{
+                width: 400,
+                backgroundColor: 'var(--color-bg-surface)',
+                borderLeft: '1px solid var(--color-bg-sidebar)',
+                height: '100%'
+            }}>
+                <FleetWorkbench selectedAsset={selectedAsset} />
+            </div>
+        </div>
+    );
+};

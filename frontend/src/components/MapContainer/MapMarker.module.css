@@ -1,0 +1,73 @@
+.markerGroup {
+    cursor: pointer;
+    transition: all var(--duration-fast) ease;
+}
+
+.markerShape {
+    fill: var(--color-text-secondary);
+    transition: fill var(--duration-fast) ease;
+}
+
+.markerStatusCritical {
+    color: var(--color-status-critical);
+    fill: var(--color-status-critical);
+}
+
+.markerStatusWarning {
+    color: var(--color-status-warning);
+    fill: var(--color-status-warning);
+}
+
+.markerStatusGood {
+    color: var(--color-status-good);
+    fill: var(--color-status-good);
+}
+
+.markerStatusAccent {
+    color: var(--color-accent);
+    fill: var(--color-accent);
+}
+
+.markerStatusNeutral {
+    color: var(--color-status-neutral);
+    fill: var(--color-status-neutral);
+}
+
+.pulseCircle {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--stroke-2);
+    opacity: var(--opacity-ring);
+    animation: pulse var(--duration-pulse) infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+/* Base circle */
+.baseCircle {
+    stroke: var(--color-bg-app);
+    stroke-width: var(--stroke-2);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(var(--marker-pulse-scale-start));
+        opacity: var(--opacity-start);
+    }
+
+    100% {
+        transform: scale(var(--marker-pulse-scale-end));
+        opacity: var(--opacity-end);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pulseCircle {
+        animation: none;
+        opacity: var(--opacity-end);
+    }
+
+    .markerGroup {
+        transition: none;
+    }
+}

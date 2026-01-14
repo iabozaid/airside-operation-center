@@ -1,0 +1,10 @@
+export const MAP_PROJECTION = {
+    DEFAULT_CENTER: { lat: 24.960, lng: 46.699 },
+    DEFAULT_ZOOM: 12,
+    SCALE_LAT: 10000,
+    SCALE_LNG: 10000,
+    CENTER_LAT: 24.965,
+    CENTER_LNG: 46.700,
+    OFFSET_X: 500,
+    OFFSET_Y: 300
+};

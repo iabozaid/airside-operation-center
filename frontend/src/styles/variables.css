@@ -1,0 +1,91 @@
+:root {
+   /* Polar Palette (Locked) */
+   --color-bg-app: #f3f4f6;
+   /* Gray-100 */
+   --color-bg-surface: #ffffff;
+   /* White */
+   --color-bg-sidebar: #e5e7eb;
+   /* Gray-200 */
+   --color-text-primary: #111827;
+   /* Gray-900 */
+   --color-text-secondary: #4b5563;
+   /* Gray-600 */
+   --color-accent: #0f766e;
+   /* Teal-700 */
+   --color-accent-hover: #115e59;
+   /* Teal-800 */
+
+   --color-status-critical: #b91c1c;
+   --color-status-warning: #ca8a04;
+   --color-status-good: #15803d;
+   /* Text Colors (Contrast) */
+   --color-text-on-light: #000000;
+   --color-text-on-dark: #ffffff;
+
+   /* Animation Scaling */
+   --marker-hover-scale: 1.1;
+   --marker-pulse-scale-start: 1;
+   --marker-pulse-scale-end: 1.8;
+
+   /* Opacity Tokens */
+   --opacity-ring: 0.5;
+   --opacity-start: 0.8;
+   --opacity-end: 0;
+
+   /* Stroke Tokens */
+   --stroke-1: 1px;
+   --stroke-2: 2px;
+
+   /* Typography Extras */
+   --font-2xl: 24px;
+
+   /* Animation Tokens */
+   --duration-pulse: 1.5s;
+
+   /* Gradient Stops */
+   --grad-stop-0: 0%;
+   --grad-stop-100: 100%;
+
+   --color-status-neutral: #6b7280;
+
+   /* Live Indicators */
+   --color-live-pulse: #facc15;
+   /* Yellow-400 */
+   --color-live-badge-bg: #fee2e2;
+   /* Red-100 */
+   --color-live-badge-text: #b91c1c;
+   /* Red-700 */
+
+   /* Typography (Inter Scale) */
+   --font-family-base: 'Inter', system-ui, sans-serif;
+   --font-size-h1: 32px;
+   --font-size-h2: 24px;
+   --font-size-body: 16px;
+   --font-size-small: 14px;
+   --font-size-tiny: 12px;
+
+   /* Spacing (4px Grid) */
+   --space-1: 4px;
+   --space-2: 8px;
+   --space-3: 12px;
+   --space-4: 16px;
+   --space-5: 20px;
+   --space-6: 24px;
+   --space-8: 32px;
+   --space-10: 40px;
+
+   /* Sizes */
+   --size-icon-lg: 32px;
+   --size-scale-width: 100px;
+   --size-scale-height: 10px;
+
+   /* Animation Tokens */
+   --duration-faster: 0.2s;
+   --duration-fast: 0.3s;
+
+   /* Layout Contracts */
+   --header-height: 64px;
+   --sidebar-width: 280px;
+   --z-index-header: 1000;
+   --z-index-overlay: 2000;
+}

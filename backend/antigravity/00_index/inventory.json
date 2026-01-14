@@ -1,0 +1,116 @@
+{
+  "contexts": [
+    "analytics",
+    "baggage",
+    "fleet",
+    "identity",
+    "infrastructure",
+    "shared",
+    "simulation",
+    "soc",
+    "ticketing",
+    "tickets",
+    "visitors"
+  ],
+  "services": [
+    {
+      "name": "AuthService",
+      "file": "identity/service.py"
+    },
+    {
+      "name": "BaggageService",
+      "file": "baggage/service.py"
+    },
+    {
+      "name": "FleetService",
+      "file": "fleet/service.py"
+    },
+    {
+      "name": "SocService",
+      "file": "soc/service.py"
+    },
+    {
+      "name": "TicketService",
+      "file": "ticketing/service.py"
+    },
+    {
+      "name": "VisitorService",
+      "file": "visitors/service.py"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "AssetRepository",
+      "file": "fleet/repository.py"
+    },
+    {
+      "name": "SocRepository",
+      "file": "soc/repository.py"
+    },
+    {
+      "name": "TicketRepository",
+      "file": "ticketing/repository.py"
+    },
+    {
+      "name": "UserRepository",
+      "file": "identity/repository.py"
+    }
+  ],
+  "events": [
+    "fleet.asset.created",
+    "fleet.asset.status_changed",
+    "fleet.asset_status_changed",
+    "fleet.geofence_breached",
+    "fleet.overspeed_detected",
+    "fleet.robot_patrol_started",
+    "identity.user_created",
+    "identity.user_login_succeeded",
+    "incident.created",
+    "incident.state_changed",
+    "ticket.assigned",
+    "ticket.created",
+    "ticket.state_changed"
+  ],
+  "env_vars": [
+    {
+      "name": "ADMIN_PASSWORD",
+      "source": "Settings"
+    },
+    {
+      "name": "ADMIN_USERNAME",
+      "source": "Settings"
+    },
+    {
+      "name": "AUTH_SECRET",
+      "source": "Settings"
+    },
+    {
+      "name": "AUTO_MIGRATE",
+      "source": "Settings"
+    },
+    {
+      "name": "CORS_ORIGINS",
+      "source": "Settings"
+    },
+    {
+      "name": "DATABASE_URL",
+      "source": "Settings"
+    },
+    {
+      "name": "DEMO_NO_REDIS",
+      "source": "Settings"
+    },
+    {
+      "name": "DEMO_NO_REDIS_STREAMS",
+      "source": "Settings"
+    },
+    {
+      "name": "REDIS_URL",
+      "source": "Settings"
+    },
+    {
+      "name": "SEED_ADMIN",
+      "source": "Settings"
+    }
+  ]
+}

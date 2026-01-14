@@ -1,0 +1,83 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Projects\Riyadh Airport\backend
+configfile: pyproject.toml
+plugins: anyio-4.12.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 38 items
+
+tests\test_api_contracts.py ..x                                          [  7%]
+tests\test_baggage_visitors.py ..                                        [ 13%]
+tests\test_bootstrap.py ...                                              [ 21%]
+tests\test_consumers.py ......                                           [ 36%]
+tests\test_identity_api.py ......                                        [ 52%]
+tests\test_infra.py ...s                                                 [ 63%]
+tests\test_notifications.py ..                                           [ 68%]
+tests\test_soc_service.py .......                                        [ 86%]
+tests\test_sse.py .                                                      [ 89%]
+tests\test_ticket_service.py ....                                        [100%]
+
+============================== warnings summary ===============================
+src\soc\schemas.py:20
+  C:\Projects\Riyadh Airport\backend\src\soc\schemas.py:20: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    updated_at_utc: datetime = datetime.utcnow()
+
+src\main.py:87
+  C:\Projects\Riyadh Airport\backend\src\main.py:87: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+venv\Lib\site-packages\fastapi\applications.py:4576
+venv\Lib\site-packages\fastapi\applications.py:4576
+  C:\Projects\Riyadh Airport\backend\venv\Lib\site-packages\fastapi\applications.py:4576: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+src\main.py:106
+  C:\Projects\Riyadh Airport\backend\src\main.py:106: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+tests/test_api_contracts.py::test_api_contracts
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\shared\event_bus.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp = datetime.utcnow().isoformat()
+
+tests/test_api_contracts.py::test_api_contracts
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\shared\event_bus.py:90: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    ts = int(datetime.utcnow().timestamp() * 1000)
+
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\simulation\control_router.py:28: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp = datetime.datetime.utcnow().isoformat()
+
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\main.py:146: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "timestamp": datetime.datetime.utcnow().isoformat(),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========== 36 passed, 1 skipped, 1 xfailed, 22 warnings in 12.98s ============

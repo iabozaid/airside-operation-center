@@ -1,0 +1,134 @@
+.pageContainer {
+    padding: 32px;
+    background: #f1f5f9;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+}
+
+/* Banner */
+.statusBanner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: #10b981;
+    /* Ops Green */
+    color: white;
+    border-radius: 8px;
+    margin-top: 16px;
+    /* Space for TopBar if fixed */
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+/* Grid Layout */
+/* Grid Layout */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+/* Row spanning */
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+/* Card Baseline */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    min-height: 320px;
+    /* Uniform height for main rows */
+}
+
+.timelineCard {
+    min-height: 180px;
+    height: auto;
+}
+
+.cardHeader {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardTitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cardBody {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    position: relative;
+    /* Ensure content doesn't balloon */
+    max-height: 400px;
+}
+
+/* Widget Specific Utilities */
+.kpiBig {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1;
+}
+
+.kpiLabel {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* Loading/Error States */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #cbd5e1;
+    font-weight: 600;
+    animation: pulse 1.5s infinite;
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #ef4444;
+    text-align: center;
+    padding: 20px;
+    gap: 8px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

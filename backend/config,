@@ -1,0 +1,4 @@
+_cache_size=100, max_cached_statement_lifetime=300, max_cacheable_statement_size=15360)       
+connection_class = <class 'asyncpg.connection.Connection'>
+record_class = <class 'asyncpg.protocol.record.Record'>
+params_input = ConnectionParameters(user='postgres', password='postgres', database='postgres', ssl=<ssl.SSLContext object at 0x000001... 'postgres'>, server_settings=None, target_session_attrs=<SessionAttribute.any: 'any'>, krbsrvname=None, gsslib='sspi')

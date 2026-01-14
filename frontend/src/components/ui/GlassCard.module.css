@@ -1,0 +1,21 @@
+.card {
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    border: var(--border-thin) solid var(--bg-glass-border);
+    backdrop-filter: blur(var(--backdrop-blur-sm));
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease;
+}
+
+.default {
+    background-color: var(--bg-glass);
+}
+
+.panel {
+    background-color: var(--bg-panel-translucent);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-glow);
+}

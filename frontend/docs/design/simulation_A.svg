@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="1080" version="1.1" width="1920" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        text { font-family: 'Inter', sans-serif; fill: #f8fafc; }
+        .muted { fill: #94a3b8; }
+        .accent { fill: #2563eb; font-weight: bold; }
+        .header { font-size: 24px; font-weight: 600; }
+        .label { font-size: 14px; }
+        .value { font-size: 16px; font-weight: 600; }
+    ]]></style></defs><rect fill="#0f172a" height="1080" width="1920" x="0" y="0" /><rect fill="#1e293b" height="64" stroke="#334155" stroke-width="1" width="1920" x="0" y="0" /><text class="header" x="20" y="40">AIRPORT COMMAND :: /simulation - ENTITY INJECTOR [International]</text><rect fill="#1e293b" height="150" stroke="#334155" stroke-width="1" width="465.0" x="20.0" y="84" /><text class="muted" x="40.0" y="114">KPI METRIC</text><text font-size="48px" x="40.0" y="164">000</text><rect fill="#1e293b" height="150" stroke="#334155" stroke-width="1" width="465.0" x="490.0" y="84" /><text class="muted" x="510.0" y="114">KPI METRIC</text><text font-size="48px" x="510.0" y="164">000</text><rect fill="#1e293b" height="150" stroke="#334155" stroke-width="1" width="465.0" x="960.0" y="84" /><text class="muted" x="980.0" y="114">KPI METRIC</text><text font-size="48px" x="980.0" y="164">000</text><rect fill="#1e293b" height="150" stroke="#334155" stroke-width="1" width="465.0" x="1430.0" y="84" /><text class="muted" x="1450.0" y="114">KPI METRIC</text><text font-size="48px" x="1450.0" y="164">000</text><rect fill="#1e293b" height="810" stroke="#334155" stroke-width="1" width="1880" x="20" y="250" /><text class="accent" x="40" y="290">DATA GRID / INJECTION CONTROLS</text></svg>

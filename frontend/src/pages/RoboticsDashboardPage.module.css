@@ -1,0 +1,326 @@
+.pageContainer {
+    display: flex;
+    height: 100vh;
+    background-color: #f9fafb;
+    font-family: 'Inter', sans-serif;
+    color: #111827;
+    overflow: hidden;
+}
+
+/* Layout Columns */
+.leftColumn {
+    width: 320px;
+    background-color: #ffffff;
+    border-right: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.centerColumn {
+    flex: 1;
+    background-color: #f9fafb;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Prevent flex blowout */
+}
+
+.rightColumn {
+    width: 380px;
+    background-color: #ffffff;
+    border-left: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* Common Headers */
+.columnHeader {
+    padding: 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.sectionTitle {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #374151;
+    letter-spacing: 0.05em;
+}
+
+/* KPI Tiles */
+.kpiSummary {
+    padding: 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.kpiTopTile {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.kpiGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.kpiSmallTile {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.kpiNumber {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* List/Queue */
+.queueHeader {
+    padding: 16px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 10px;
+    font-weight: 700;
+    color: #374151;
+    text-transform: uppercase;
+}
+
+.queueList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.queueItem {
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.queueItem:hover {
+    background: #f9fafb;
+}
+
+.queueItemSelected {
+    background: #2563eb !important;
+    color: white;
+}
+
+.queueItemSelected .textMuted {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.statusBadge {
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+}
+
+.textMuted {
+    color: #6b7280;
+}
+
+/* Map Card */
+.mapCard {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mapHeader {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mapCanvas {
+    flex: 1;
+    background: #f9fafb;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.mapLegend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.liveBadge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #16a34a;
+    padding: 8px 12px;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.pulsingDot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Right Panel Components */
+.detailsHeader {
+    padding: 20px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.section {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.alertCard {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.aiCard {
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.telemetryRow {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+/* Camera Feed */
+.cameraFeed {
+    aspect-ratio: 16/9;
+    background: #111827;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.camBadge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    color: white;
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.btnPrimary {
+    background: #2563eb;
+    color: white;
+}
+
+.btnSecondary {
+    background: white;
+    border: 1px solid #d1d5db;
+    color: #374151;
+}
+
+.btnDanger {
+    background: white;
+    border: 1px solid #fca5a5;
+    color: #dc2626;
+}
+
+.toggleBtn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.togglePrimary {
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+
+.toggleSecondary {
+    background: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}

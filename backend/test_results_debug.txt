@@ -1,0 +1,213 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Projects\Riyadh Airport\backend
+configfile: pyproject.toml
+plugins: anyio-4.12.1
+collecting ... collected 1 item
+
+tests/test_demo_mode_no_db_calls.py::test_demo_mode_guardrails_all_contexts FAILED [100%]
+
+================================== FAILURES ===================================
+___________________ test_demo_mode_guardrails_all_contexts ____________________
+
+    def test_demo_mode_guardrails_all_contexts():
+        """
+        Principal Engineer Regression Gate:
+        1. Force Demo Mode.
+        2. Mock DB to explode on access.
+        3. Call representative endpoint for EVERY context.
+        4. Assert Success (200) + Schema presence.
+        """
+    
+        with patch.object(database.db, 'get_pool', side_effect=Exception("FATAL: DB Access attempted in Demo Mode!")) as mock_db:
+    
+            # 1. Analytics
+            resp_analytics = client.get("/analytics/summary")
+            assert resp_analytics.status_code == 200
+            assert "incidents_by_severity" in resp_analytics.json()
+    
+            # 2. Fleet
+            resp_fleet = client.get("/fleet/assets")
+            assert resp_fleet.status_code == 200
+            assets = resp_fleet.json()
+            assert isinstance(assets, list)
+            # Verify Mock Data is Rich
+            if len(assets) > 0:
+                assert "speed_kmh" in assets[0]
+                assert "driver" in assets[0]
+    
+            # 3. Robots
+            resp_robots = client.get("/robots")
+            assert resp_robots.status_code == 200
+            robots = resp_robots.json()
+            assert isinstance(robots, list)
+            if len(robots) > 0:
+                assert "battery_level" in robots[0]
+    
+            # 4. Tickets
+            resp_tickets = client.get("/tickets")
+            assert resp_tickets.status_code == 200
+            tickets = resp_tickets.json()
+            assert isinstance(tickets, list)
+            if len(tickets) > 0:
+                assert "sla_deadline_utc" in tickets[0]
+    
+            # 5. SOC (Incidents)
+            resp_soc = client.get("/incidents")
+            assert resp_soc.status_code == 200
+            incidents = resp_soc.json()
+            assert isinstance(incidents, list)
+    
+            # 6. Simulation
+>           resp_sim = client.post("/simulation/start")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_demo_mode_no_db_calls.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:546: in post
+    return super().post(
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:445: in request
+    return super().request(
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:348: in handle_request
+    raise exc
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:345: in handle_request
+    portal.call(self.app, scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1135: in __call__
+    await super().__call__(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:198: in __call__
+    raise app_exc
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:115: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:102: in app
+    await response(scope, receive, send)
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\responses.py:167: in __call__
+    await self.background()
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\background.py:36: in __call__
+    await task()
+C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\starlette\background.py:21: in __call__
+    await self.func(*self.args, **self.kwargs)
+src\simulation\scenarios.py:22: in run_default_scenario
+    await _execute_fleet_scenario(event_bus, scenario_run_id)
+src\simulation\scenarios.py:31: in _execute_fleet_scenario
+    await publish_asset_status(
+src\simulation\scenarios.py:117: in publish_asset_status
+    await event_bus.publish(
+src\shared\event_bus.py:127: in publish
+    r = await cls.get_redis()
+        ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cls = <class 'src.shared.event_bus.EventBus'>
+
+    @classmethod
+    async def get_redis(cls):
+        if cls._is_demo_mode:
+             raise RuntimeError("Redis is disabled in DEMO_NO_REDIS mode.")
+    
+        if not redis and not settings.DEMO_NO_REDIS:
+>            raise RuntimeError("Redis package missing but DEMO_NO_REDIS is False.")
+E            RuntimeError: Redis package missing but DEMO_NO_REDIS is False.
+
+src\shared\event_bus.py:42: RuntimeError
+---------------------------- Captured stdout call -----------------------------
+Unhandled Error: Redis package missing but DEMO_NO_REDIS is False.
+============================== warnings summary ===============================
+src\soc\schemas.py:21
+  C:\Projects\Riyadh Airport\backend\src\soc\schemas.py:21: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    updated_at_utc: datetime = datetime.utcnow()
+
+src\main.py:88
+  C:\Projects\Riyadh Airport\backend\src\main.py:88: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+..\..\..\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:4576
+..\..\..\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:4576
+  C:\Users\Administrator\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:4576: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+src\main.py:115
+  C:\Projects\Riyadh Airport\backend\src\main.py:115: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+tests/test_demo_mode_no_db_calls.py::test_demo_mode_guardrails_all_contexts
+  C:\Projects\Riyadh Airport\backend\src\simulation\scenarios.py:111: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "timestamp": datetime.datetime.utcnow().isoformat(),
+
+tests/test_demo_mode_no_db_calls.py::test_demo_mode_guardrails_all_contexts
+  C:\Projects\Riyadh Airport\backend\src\shared\event_bus.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp = datetime.utcnow().isoformat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_demo_mode_no_db_calls.py::test_demo_mode_guardrails_all_contexts
+======================== 1 failed, 7 warnings in 2.88s ========================

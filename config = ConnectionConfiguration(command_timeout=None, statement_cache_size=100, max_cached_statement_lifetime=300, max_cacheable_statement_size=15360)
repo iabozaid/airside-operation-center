@@ -1,0 +1,11 @@
+^^^^^^^^^^
+..\venv\Lib\site-packages\asyncpg\pool.py:538: in _get_new_connection
+    con = await self._connect(
+..\venv\Lib\site-packages\asyncpg\connection.py:2443: in connect
+    return await connect_utils._connect(
+..\venv\Lib\site-packages\asyncpg\connect_utils.py:1218: in _connect
+    conn = await _connect_addr(
+..\venv\Lib\site-packages\asyncpg\connect_utils.py:1054: in _connect_addr      
+    return await __connect_addr(params, True, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  

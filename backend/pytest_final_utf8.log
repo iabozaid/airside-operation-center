@@ -1,0 +1,345 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Projects\Riyadh Airport\backend
+configfile: pyproject.toml
+plugins: anyio-4.12.1, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 34 items
+
+tests\test_api_contracts.py ..F                                          [  8%]
+tests\test_baggage_visitors.py ..                                        [ 14%]
+tests\test_bootstrap.py ...                                              [ 23%]
+tests\test_consumers.py ......                                           [ 41%]
+tests\test_identity_api.py ......                                        [ 58%]
+tests\test_notifications.py ..                                           [ 64%]
+tests\test_soc_service.py .......                                        [ 85%]
+tests\test_sse.py .                                                      [ 88%]
+tests\test_ticket_service.py ....                                        [100%]
+
+================================== FAILURES ===================================
+_______________________________ test_sse_sanity _______________________________
+
+    async def read_sse() -> bool:
+>       async with ac.stream("GET", f"{SSE_STREAM_PATH}?since=0", headers=headers) as response:
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_api_contracts.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Python314\Lib\contextlib.py:214: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+..\venv\Lib\site-packages\httpx\_client.py:1583: in stream
+    response = await self.send(
+..\venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\venv\Lib\site-packages\fastapi\applications.py:1135: in __call__
+    await super().__call__(scope, receive, send)
+..\venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\venv\Lib\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\venv\Lib\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\venv\Lib\site-packages\fastapi\routing.py:115: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\venv\Lib\site-packages\fastapi\routing.py:102: in app
+    await response(scope, receive, send)
+..\venv\Lib\site-packages\starlette\responses.py:270: in __call__
+    async with anyio.create_task_group() as task_group:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\venv\Lib\site-packages\anyio\_backends\_asyncio.py:787: in __aexit__
+    raise exc_val
+..\venv\Lib\site-packages\starlette\responses.py:277: in __call__
+    await wrap(partial(self.listen_for_disconnect, receive))
+..\venv\Lib\site-packages\starlette\responses.py:273: in wrap
+    await func()
+..\venv\Lib\site-packages\starlette\responses.py:241: in listen_for_disconnect
+    message = await receive()
+              ^^^^^^^^^^^^^^^
+..\venv\Lib\site-packages\httpx\_transports\asgi.py:138: in receive
+    await response_complete.wait()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <asyncio.locks.Event object at 0x000001ECBE341790 [unset]>
+
+    async def wait(self):
+        """Block until the internal flag is true.
+    
+        If the internal flag is true on entry, return True
+        immediately.  Otherwise, block until another task calls
+        set() to set the flag to true, then return True.
+        """
+        if self._value:
+            return True
+    
+        fut = self._get_loop().create_future()
+        self._waiters.append(fut)
+        try:
+>           await fut
+E           asyncio.exceptions.CancelledError
+
+C:\Python314\Lib\asyncio\locks.py:213: CancelledError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.mark.asyncio
+    async def test_sse_sanity():
+        """
+        Connects to SSE stream and waits for a single event to verify envelope.
+        Deterministically triggers an event first to ensure stream has data.
+        """
+        transport = ASGITransport(app=app)
+    
+        async with LifespanManager(app):
+            async with AsyncClient(transport=transport, base_url="http://test") as ac:
+                headers = await login(ac)
+    
+                # 1. Trigger Simulation Event (Overspeed)
+                sim_resp = await ac.post(SIM_OVERSPEED_PATH, headers=headers)
+                assert sim_resp.status_code == 200, f"Simulation trigger failed: {sim_resp.text}"
+    
+                # 2. Connect and Read with Timeout
+                # Use query param to force replay (since=0) as header might be finicky in test transport
+                async def read_sse() -> bool:
+                    async with ac.stream("GET", f"{SSE_STREAM_PATH}?since=0", headers=headers) as response:
+                        assert response.status_code == 200
+                        assert response.headers.get("content-type", "").startswith("text/event-stream")
+    
+                        async for line in response.aiter_lines():
+                            # Robust parsing: handle 'data:' with or without space
+                            if line.startswith("data:"):
+                                payload_json = line[5:].strip()
+                                if not payload_json:
+                                    continue
+    
+                                try:
+                                    data = json.loads(payload_json)
+                                except json.JSONDecodeError:
+                                    continue
+    
+                                keys = data.keys()
+    
+                                # Identify keys
+                                event_type = data.get("event_type") or data.get("eventType") or data.get("type")
+                                correlation_id = data.get("correlation_id") or data.get("correlationId")
+    
+                                has_timestamp = any(k in keys for k in [
+                                    "timestamp", "timestamp_utc", "timestampUtc",
+                                    "created_at_utc", "createdAtUtc"
+                                ])
+    
+                                # Verification Logic
+                                if event_type:
+                                    # Wait for specific event if typed
+                                    if event_type == "fleet.overspeed_detected":
+                                        return True
+                                    # Otherwise ignore other events
+                                    continue
+    
+                                # If untyped, accept any valid envelope shape
+                                if correlation_id and has_timestamp:
+                                    return True
+    
+                    return False
+    
+                try:
+                    # 5 second timeout for deterministic failure
+>                   success = await asyncio.wait_for(read_sse(), timeout=5.0)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_api_contracts.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Python314\Lib\asyncio\tasks.py:487: in wait_for
+    async with timeouts.timeout(timeout):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Timeout [expired]>
+exc_type = <class 'asyncio.exceptions.CancelledError'>
+exc_val = CancelledError(), exc_tb = <traceback object at 0x000001ECBE32FD00>
+
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> bool | None:
+        assert self._state in (_State.ENTERED, _State.EXPIRING)
+    
+        if self._timeout_handler is not None:
+            self._timeout_handler.cancel()
+            self._timeout_handler = None
+    
+        if self._state is _State.EXPIRING:
+            self._state = _State.EXPIRED
+    
+            if self._task.uncancel() <= self._cancelling and exc_type is not None:
+                # Since there are no new cancel requests, we're
+                # handling this.
+                if issubclass(exc_type, exceptions.CancelledError):
+>                   raise TimeoutError from exc_val
+E                   TimeoutError
+
+C:\Python314\Lib\asyncio\timeouts.py:114: TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.mark.asyncio
+    async def test_sse_sanity():
+        """
+        Connects to SSE stream and waits for a single event to verify envelope.
+        Deterministically triggers an event first to ensure stream has data.
+        """
+        transport = ASGITransport(app=app)
+    
+        async with LifespanManager(app):
+            async with AsyncClient(transport=transport, base_url="http://test") as ac:
+                headers = await login(ac)
+    
+                # 1. Trigger Simulation Event (Overspeed)
+                sim_resp = await ac.post(SIM_OVERSPEED_PATH, headers=headers)
+                assert sim_resp.status_code == 200, f"Simulation trigger failed: {sim_resp.text}"
+    
+                # 2. Connect and Read with Timeout
+                # Use query param to force replay (since=0) as header might be finicky in test transport
+                async def read_sse() -> bool:
+                    async with ac.stream("GET", f"{SSE_STREAM_PATH}?since=0", headers=headers) as response:
+                        assert response.status_code == 200
+                        assert response.headers.get("content-type", "").startswith("text/event-stream")
+    
+                        async for line in response.aiter_lines():
+                            # Robust parsing: handle 'data:' with or without space
+                            if line.startswith("data:"):
+                                payload_json = line[5:].strip()
+                                if not payload_json:
+                                    continue
+    
+                                try:
+                                    data = json.loads(payload_json)
+                                except json.JSONDecodeError:
+                                    continue
+    
+                                keys = data.keys()
+    
+                                # Identify keys
+                                event_type = data.get("event_type") or data.get("eventType") or data.get("type")
+                                correlation_id = data.get("correlation_id") or data.get("correlationId")
+    
+                                has_timestamp = any(k in keys for k in [
+                                    "timestamp", "timestamp_utc", "timestampUtc",
+                                    "created_at_utc", "createdAtUtc"
+                                ])
+    
+                                # Verification Logic
+                                if event_type:
+                                    # Wait for specific event if typed
+                                    if event_type == "fleet.overspeed_detected":
+                                        return True
+                                    # Otherwise ignore other events
+                                    continue
+    
+                                # If untyped, accept any valid envelope shape
+                                if correlation_id and has_timestamp:
+                                    return True
+    
+                    return False
+    
+                try:
+                    # 5 second timeout for deterministic failure
+                    success = await asyncio.wait_for(read_sse(), timeout=5.0)
+                    assert success, "Stream stayed open but no valid target event received"
+                except asyncio.TimeoutError:
+>                   pytest.fail("SSE Stream timed out after 5 seconds")
+E                   Failed: SSE Stream timed out after 5 seconds
+
+tests\test_api_contracts.py:191: Failed
+---------------------------- Captured stdout call -----------------------------
+[WARN] Schema file not found at C:\Projects\Riyadh Airport\backend\src\infrastructure\schema.sql. Skipping init.
+------------------------------ Captured log call ------------------------------
+WARNING  src.shared.event_bus:event_bus.py:64 [DEMO MODE] Redis disabled. Using In-Memory Event Bus.
+WARNING  src.shared.consumers:consumers.py:157 [DEMO MODE] Starting In-Memory Consumers (No Redis).
+============================== warnings summary ===============================
+src\soc\schemas.py:20
+  C:\Projects\Riyadh Airport\backend\src\soc\schemas.py:20: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    updated_at_utc: datetime = datetime.utcnow()
+
+src\main.py:35
+  C:\Projects\Riyadh Airport\backend\src\main.py:35: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+..\venv\Lib\site-packages\fastapi\applications.py:4576
+..\venv\Lib\site-packages\fastapi\applications.py:4576
+  c:\Projects\Riyadh Airport\venv\Lib\site-packages\fastapi\applications.py:4576: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+src\main.py:54
+  C:\Projects\Riyadh Airport\backend\src\main.py:54: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+tests/test_api_contracts.py::test_api_contracts
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\shared\event_bus.py:96: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp = datetime.utcnow().isoformat()
+
+tests/test_api_contracts.py::test_api_contracts
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_fleet_lifecycle
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\shared\event_bus.py:90: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    ts = int(datetime.utcnow().timestamp() * 1000)
+
+tests/test_api_contracts.py::test_sse_sanity
+  C:\Projects\Riyadh Airport\backend\src\simulation\control_router.py:28: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp = datetime.datetime.utcnow().isoformat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_api_contracts.py::test_sse_sanity - Failed: SSE Stream time...
+================= 1 failed, 33 passed, 20 warnings in 10.84s ==================

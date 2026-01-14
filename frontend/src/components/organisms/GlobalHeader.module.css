@@ -1,0 +1,43 @@
+.header {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-4);
+    background-color: var(--bg-panel);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: var(--font-xl);
+    letter-spacing: 0;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.brand {
+    color: var(--accent-primary);
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.clock {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-secondary);
+    font-size: var(--font-md);
+}
+
+.user {
+    font-size: var(--font-sm);
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-thin) solid var(--bg-glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+}

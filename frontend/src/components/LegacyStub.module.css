@@ -1,0 +1,27 @@
+/* 
+  Authority: Zero Tolerance for hardcoded values.
+*/
+
+.stub {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-app);
+    color: var(--text-muted);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.link {
+    color: var(--accent-primary);
+    font-size: var(--font-xl);
+    margin-top: var(--space-4);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    text-shadow: var(--shadow-glow);
+}

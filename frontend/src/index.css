@@ -1,0 +1,10 @@
+/* 
+  Entry point for Global Styles
+  Strict Usage Only.
+*/
+
+@import './styles/variables.css';
+@import './styles/global.css';
+@import './styles/animations.css';
+
+/* No other styles allowed here. Use *.module.css for components. */

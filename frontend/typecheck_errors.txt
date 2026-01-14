@@ -1,0 +1,29 @@
+
+> atss-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+src/api/client.ts(1,10): error TS6133: 'AppEvent' is declared but its value is never read.
+src/App.tsx(14,5): error TS6133: 'PlaceholderPage' is declared but its value is never read.
+src/archive/MainLayout.tsx(5,10): error TS2614: Module '"../App"' has no exported member 'useAppState'. Did you mean to use 'import useAppState from "../App"' instead?
+src/archive/MasterMap.tsx(1,17): error TS6133: 'useMemo' is declared but its value is never read.
+src/components/LegacyStub.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/MapContainer/MapContainer.tsx(2,8): error TS6133: 'React' is declared but its value is never read.
+src/components/MapContainer/MapContainer.tsx(5,1): error TS6133: 'MapMarkerProps' is declared but its value is never read.
+src/components/OperationsQueue/OperationsQueue.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/organisms/GlobalHeader.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/StatusBadge.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Workbench/Workbench.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/Workbench/Workbench.tsx(5,20): error TS6133: 'MOCK_LOGS' is declared but its value is never read.
+src/components/Workbench/Workbench.tsx(17,5): error TS6133: 'onClaim' is declared but its value is never read.
+src/components/Workbench/Workbench.tsx(47,40): error TS2304: Cannot find name 'handleClaim'.
+src/features/analytics/AnalyticsPage.tsx(90,52): error TS6133: 'neutral' is declared but its value is never read.
+src/features/ops/OpsPage.tsx(114,65): error TS2367: This comparison appears to be unintentional because the types '"medium" | "low"' and '"critical"' have no overlap.
+src/infrastructure/sse_client.ts(52,29): error TS2503: Cannot find namespace 'NodeJS'.
+src/infrastructure/sse_client.ts(53,13): error TS6133: 'isConnected' is declared but its value is never read.
+src/layout/CommandCenterLayout.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/pages/AnalyticsPage.tsx(2,1): error TS6133: 'React' is declared but its value is never read.
+src/pages/FleetPage.tsx(2,1): error TS6133: 'React' is declared but its value is never read.
+src/pages/OpsPage.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/pages/SimulationPage.tsx(2,8): error TS6133: 'React' is declared but its value is never read.
+src/pages/TicketsPage.tsx(2,1): error TS6133: 'React' is declared but its value is never read.
+src/state/useOpsState.ts(3,10): error TS6133: 'OpsState' is declared but its value is never read.

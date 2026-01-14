@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="1080" version="1.1" width="1920" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        text { font-family: 'Inter', sans-serif; fill: #0f172a; }
+        .header { font-size: 32px; font-weight: 600; }
+        .section { font-size: 20px; font-weight: 600; }
+        .body { font-size: 16px; weight: 400; }
+        .dense { font-size: 14px; }
+        .meta { font-size: 12px; fill: #64748b; }
+        .accent { fill: #0f766e; }
+        .critical { fill: #b91c1c; }
+    ]]></style></defs><rect fill="#f3f4f6" height="1080" width="1920" x="0" y="0" /><rect fill="#ffffff" height="64" stroke="#e5e7eb" stroke-width="1" width="1920" x="0" y="0" /><text class="header" font-size="24px" x="24" y="42">RIYADH AIRPORT OPERATIONS :: /tickets - RESOLUTION</text><text class="meta" x="1470" y="42">Resolution: 1920x1080 | Version: 2026-01-10 07:16:51 UTC | Mode: POLAR (LOCKED)</text><line stroke="#e5e7eb" x1="960.0" x2="960.0" y1="64" y2="1080" /><text class="section" x="20" y="100">TICKET QUEUE</text><text class="section" x="980.0" y="100">DETAILS &amp; TIMELINE</text><text class="section" x="980.0" y="400">MEDIA EVIDENCE</text><rect fill="#f3f4f6" height="100" stroke="#e5e7eb" width="150" x="980.0" y="430" /><line stroke="#e5e7eb" x1="980.0" x2="1130.0" y1="430" y2="530" /><text class="meta" x="1040.0" y="480">JPG</text><rect fill="#f3f4f6" height="100" stroke="#e5e7eb" width="150" x="1140.0" y="430" /><line stroke="#e5e7eb" x1="1140.0" x2="1290.0" y1="430" y2="530" /><text class="meta" x="1200.0" y="480">JPG</text><rect fill="#f3f4f6" height="100" stroke="#e5e7eb" width="150" x="1300.0" y="430" /><line stroke="#e5e7eb" x1="1300.0" x2="1450.0" y1="430" y2="530" /><text class="meta" x="1360.0" y="480">JPG</text></svg>

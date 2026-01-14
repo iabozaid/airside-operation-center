@@ -1,0 +1,480 @@
+.pageContainer {
+    display: flex;
+    height: 100%;
+    background-color: #F9FAFB;
+    font-family: 'Inter',
+        sans-serif;
+    color: #111827;
+    overflow: hidden;
+}
+
+/* 3-Column Grid */
+.leftColumn {
+    width: 340px;
+    background-color: #ffffff;
+    border-right: 2px solid #D1D5DB;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 20;
+}
+
+.centerColumn {
+    flex: 1;
+    background-color: #F9FAFB;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.rightColumn {
+    width: 380px;
+    background-color: #ffffff;
+    border-left: 2px solid #D1D5DB;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 20;
+}
+
+/* Headers */
+.panelHeader {
+    padding: 20px;
+    border-bottom: 2px solid #E5E7EB;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.sectionTitle {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #374151;
+    letter-spacing: 0.05em;
+}
+
+.subTitle {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 4px;
+}
+
+/* Tabs */
+.tabBar {
+    display: flex;
+    border-bottom: 1px solid #E5E7EB;
+    background: #fff;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B7280;
+    background: #F3F4F6;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.tab:hover {
+    background: #E5E7EB;
+}
+
+.tabActive {
+    background: #2563EB;
+    color: white;
+    border-bottom: 2px solid #1D4ED8;
+}
+
+.tabBadge {
+    padding: 2px 6px;
+    border-radius: 99px;
+    font-size: 10px;
+    background: #D1D5DB;
+    color: #374151;
+}
+
+.tabActive .tabBadge {
+    background: #ffffff;
+    color: #2563EB;
+}
+
+/* Special Badge for Escalation Tab */
+.escalationTab .tabBadge {
+    background: #DC2626 !important;
+    color: white !important;
+}
+
+/* Incident List */
+.incidentList {
+    flex: 1;
+    overflow-y: auto;
+    background: #F9FAFB;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.incidentCard {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.incidentCard:hover {
+    border-color: #3B82F6;
+}
+
+.incidentCardSelected {
+    background: #2563EB !important;
+    border-color: #1D4ED8 !important;
+    color: white !important;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.severityStrip {
+    width: 6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.cardContent {
+    flex: 1;
+    padding-left: 10px;
+    /* Offset for strip */
+}
+
+.cardRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.cardId {
+    font-family: monospace;
+    font-size: 10px;
+    color: #6B7280;
+}
+
+.incidentCardSelected .cardId {
+    color: #BFDBFE;
+}
+
+.slaBadge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.slaBreached {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.slaWarning {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.slaNormal {
+    background: #F3F4F6;
+    color: #6B7280;
+}
+
+.incidentCardSelected .slaBadge {
+    background: #3B82F6;
+    color: #DBEAFE;
+    border: 1px solid #60A5FA;
+}
+
+/* Status Chip */
+.statusChip {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #F3F4F6;
+    color: #4B5563;
+    font-weight: 600;
+}
+
+.incidentCardSelected .statusChip {
+    background: #60A5FA;
+    color: white;
+}
+
+/* Map Area */
+.mapHeader {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.watchModeBtn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid #E5E7EB;
+    background: #F3F4F6;
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.watchModeActive {
+    background: #DC2626;
+    color: white;
+    border-color: #B91C1C;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+    animation: btnPulse 2s infinite;
+}
+
+@keyframes btnPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    }
+}
+
+.layerControls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 8px;
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    z-index: 10;
+}
+
+.layerToggle {
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    border: 1px solid #E5E7EB;
+    background: #F9FAFB;
+    color: #6B7280;
+    cursor: pointer;
+}
+
+.layerActive {
+    background: #2563EB;
+    color: white;
+    border-color: #1D4ED8;
+}
+
+/* Right Panel */
+.modeSwitcher {
+    display: flex;
+    padding: 12px;
+    background: white;
+    border-bottom: 2px solid #E5E7EB;
+    gap: 4px;
+}
+
+.modeBtn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6B7280;
+    background: #F3F4F6;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.modeBtnActive {
+    background: #2563EB;
+    color: white;
+}
+
+.panelContent {
+    flex: 1;
+    overflow-y: auto;
+    background: #F9FAFB;
+}
+
+.controlHeader {
+    background: white;
+    padding: 20px;
+    border-bottom: 1px solid #E5E7EB;
+    position: sticky;
+    top: 0;
+}
+
+.detailSection {
+    background: white;
+    padding: 20px;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 8px;
+}
+
+.actionBtn {
+    width: 100%;
+    padding: 12px;
+    background: #2563EB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.actionBtn:hover {
+    background: #1D4ED8;
+}
+
+.secondaryGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.secBtn {
+    padding: 10px;
+    background: white;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.secBtnEscalate {
+    border-color: #FCA5A5;
+    color: #DC2626;
+}
+
+/* Intel Grid */
+.intelGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 20px;
+}
+
+.kpiCard {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.kpiVal {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.kpiLabel {
+    font-size: 11px;
+    color: #6B7280;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #9CA3AF;
+    text-align: center;
+    padding: 40px;
+}
+
+.pulsingDot {
+    width: 8px;
+    height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.liveBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+}

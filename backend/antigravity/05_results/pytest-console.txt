@@ -1,0 +1,22 @@
+﻿python.exe : ERROR: usage: 
+python.exe -m pytest 
+[options] [file_or_dir] 
+[file_or_dir] [...]
+At C:\Projects\Riyadh Airport\
+backend\scripts\generate_antig
+ravity_docs.ps1:64 char:5
++     & $PYTHON -m pytest 
+"$ROOT_DIR" 
+--junitxml="$JUNIT_TMP" --cov 
+--c ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo          : 
+    NotSpecified: (ERROR: us  
+  age: p...e_or_dir] [...]:   
+ String) [], RemoteExcepti    
+on
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 

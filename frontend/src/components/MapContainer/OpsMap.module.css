@@ -1,0 +1,109 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-app);
+    position: relative;
+    overflow: hidden;
+}
+
+.svg {
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+    fill: var(--color-bg-app);
+}
+
+/* Master Map Elements */
+.runway {
+    fill: var(--color-bg-sidebar);
+}
+
+.runwayLabel {
+    fill: var(--color-text-secondary);
+    font-size: var(--font-size-tiny);
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.terminalBlock {
+    fill: var(--color-bg-surface);
+    stroke: var(--color-accent);
+    stroke-width: var(--stroke-2);
+}
+
+.terminalLabel {
+    fill: var(--color-text-primary);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    text-anchor: middle;
+}
+
+/* Markers */
+.markerGroup {
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.markerShape {
+    stroke: var(--color-bg-surface);
+    stroke-width: var(--stroke-1);
+}
+
+.markerLabel {
+    fill: var(--color-text-primary);
+    font-size: var(--font-size-tiny);
+    text-anchor: middle;
+}
+
+.markerSelected .markerShape {
+    stroke: var(--color-status-critical);
+    stroke-width: var(--stroke-2);
+}
+
+/* Status Classes (MANDATORY) */
+.markerStatusCritical {
+    fill: var(--color-status-critical);
+}
+
+.markerStatusWarning {
+    fill: var(--color-status-warning);
+}
+
+.markerStatusGood {
+    fill: var(--color-status-good);
+}
+
+.markerStatusAccent {
+    fill: var(--color-accent);
+}
+
+.markerStatusNeutral {
+    fill: var(--color-status-neutral);
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-1);
+    border-left: var(--stroke-2) solid var(--color-accent);
+    box-shadow: var(--shadow-1);
+}
+
+.overlayTitle {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+}
+
+.overlaySubtitle {
+    color: var(--color-status-good);
+    font-size: var(--font-size-tiny);
+    font-weight: 500;
+    text-transform: uppercase;
+}

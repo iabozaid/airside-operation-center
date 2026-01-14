@@ -1,0 +1,125 @@
+/* 
+  Context Page Styles
+  Authority: Token Discipline
+*/
+
+.stubContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.stubCard {
+    padding: var(--space-8);
+    text-align: center;
+    max-width: var(--layout-card-max);
+    /* This is an allowed layout constraint, or should be tokenized if strict */
+}
+
+.stubTitle {
+    color: var(--status-warn);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-lg);
+    font-weight: bold;
+}
+
+.stubText {
+    margin-bottom: var(--space-6);
+    color: var(--text-primary);
+    font-size: var(--font-md);
+    line-height: 1.5;
+}
+
+.stubButton {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: var(--accent-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+}
+
+/* Simulation Page */
+.simContainer {
+    padding: var(--space-8);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.simHeader {
+    margin-bottom: var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.simTitle {
+    font-size: var(--font-xl);
+    color: var(--text-primary);
+}
+
+.simStatus {
+    color: var(--status-ok);
+    font-size: var(--font-sm);
+    font-family: monospace;
+}
+
+.scenarioGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--layout-card-min), 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+
+.scenarioCard {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.scenarioLabel {
+    margin-bottom: var(--space-2);
+    font-size: var(--font-lg);
+}
+
+.scenarioStatus {
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-6);
+    font-family: monospace;
+}
+
+.scenarioButton {
+    width: 100%;
+    padding: var(--space-3);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.timeWarpPanel {
+    padding: var(--space-6);
+}
+
+.timeWarpTitle {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+.timeWarpControls {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.timeWarpButton {
+    flex: 1;
+    padding: var(--space-4);
+    font-weight: bold;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
