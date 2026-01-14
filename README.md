@@ -1,4 +1,4 @@
-# ATSS Matarat - Command Center
+# Airside Operation Center (AOC)
 
 > [!IMPORTANT]
 > **DEMO ENVIRONMENT DISCLAIMER**
@@ -98,8 +98,7 @@ The Fleet context tracks asset lifecycle states which determine operational avai
 
 ## Simulation
 To test the system without real hardware:
-1. Go to **OPS** page.
-2. Click **+ Sim** button directly in the feed header.
-3. Observe incident appear (via SSE).
-4. Click incident to open **Workbench**.
-5. Execute SOP steps and Transition states.
+1. Go to **Simulation Control** (`/simulation`).
+2. Select a scenario (e.g., "Fleet Safety").
+3. Click **Run**.
+4. Observe incidents appearing in the **Unified Operations Console** (`/ops`).
