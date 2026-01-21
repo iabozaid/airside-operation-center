@@ -1,5 +1,8 @@
 # Airside Operation Center (AOC)
 
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/ff5234d6-a9b7-44fb-acc6-c92a4054138c" />
+
+
 > [!IMPORTANT]
 > **DEMO ENVIRONMENT DISCLAIMER**
 > This project is configured for a **local demo environment**.
