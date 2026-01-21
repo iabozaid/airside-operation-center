@@ -1,6 +1,6 @@
 # Airside Operation Center (AOC)
 
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/ff5234d6-a9b7-44fb-acc6-c92a4054138c" />
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/a0f2bd76-d1fd-4055-af7e-6c2ca9a992c5" />
 
 
 > [!IMPORTANT]
